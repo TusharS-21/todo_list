@@ -30,6 +30,74 @@ header {
   margin-bottom: 2rem;
 }
 
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, rgba(59,130,246,0.06), rgba(99,102,241,0.03));
+  border-radius: 0.75rem;
+}
+
+.nav-brand {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.5rem;
+}
+
+.nav-links a:hover {
+  background: rgba(59,130,246,0.08);
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    right: 1rem;
+    background: var(--card);
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    padding: 0.5rem;
+    display: none;
+    border-radius: 0.5rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
 h1 {
   margin: 0;
   font-size: clamp(2rem, 4vw, 3rem);
