@@ -1,10 +1,11 @@
 :root {
-  --bg: #f4f7fc;
-  --card: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --accent: #3b82f6;
-  --border: #d1d5db;
+  --bg: #f7f1e1;
+  --panel: #fff7ea;
+  --text: #322b25;
+  --muted: #766a5e;
+  --accent: #8f5e34;
+  --border: #d8c7b0;
+  --shadow: rgba(68, 54, 42, 0.12);
 }
 
 * {
@@ -14,14 +15,14 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
+  font-family: "Georgia", "Palatino Linotype", Palatino, serif;
+  background: radial-gradient(circle at top left, #fff7e0 0%, #f2e6d0 40%, #eadcc2 100%);
   color: var(--text);
 }
 
 .container {
-  padding: 2rem;
-  max-width: 640px;
+  padding: 2.5rem 1.5rem;
+  max-width: 720px;
   margin: 0 auto;
 }
 
@@ -30,22 +31,25 @@ header {
   margin-bottom: 2rem;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(90deg, var(--accent), rgba(59,130,246,0.85));
-  color: white;
-  border-radius: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px var(--shadow);
 }
 
 .nav-brand {
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #ffffff;
+  letter-spacing: 0.06em;
+  color: var(--text);
 }
 
 .nav-links {
@@ -57,38 +61,43 @@ header {
 }
 
 .nav-links a {
-  color: rgba(255,255,255,0.95);
+  color: var(--muted);
   text-decoration: none;
-  font-weight: 600;
-  padding: 0.35rem 0.6rem;
-  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.75rem;
+  transition: background 180ms ease, color 180ms ease;
 }
 
 .nav-links a:hover {
-  background: rgba(255,255,255,0.08);
+  background: rgba(143, 94, 52, 0.08);
+  color: var(--text);
 }
 
 .nav-toggle {
   display: none;
   background: transparent;
-  border: none;
-  font-size: 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
   cursor: pointer;
-  color: white;
+  color: var(--text);
 }
 
 @media (max-width: 640px) {
   .nav-links {
     position: absolute;
-    top: 64px;
+    top: 76px;
     right: 1rem;
-    background: var(--card);
+    background: rgba(255, 247, 234, 0.98);
     flex-direction: column;
     gap: 0;
     border: 1px solid var(--border);
-    padding: 0.5rem;
+    padding: 0.75rem;
     display: none;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   }
 
   .nav-links.open {
@@ -103,48 +112,68 @@ header {
 h1 {
   margin: 0;
   font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.02em;
 }
 
 p {
   margin: 0.75rem auto 0;
   color: var(--muted);
-  max-width: 32rem;
+  max-width: 34rem;
+  line-height: 1.75;
 }
 
 .todo-app {
-  background: var(--card);
+  background: rgba(255, 247, 234, 0.98);
   border: 1px solid var(--border);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: 0 24px 45px var(--shadow);
 }
 
 #todo-form {
   display: flex;
   gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 #todo-input {
   flex: 1;
-  padding: 0.95rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
+  min-width: 220px;
+  padding: 1rem 1.1rem;
+  border: 1px solid #c4b29a;
+  border-radius: 0.9rem;
   font-size: 1rem;
+  font-family: inherit;
+  background: #f9f1e6;
+  color: var(--text);
+}
+
+#todo-input:focus {
+  outline: 2px solid rgba(143, 94, 52, 0.2);
+  outline-offset: 2px;
 }
 
 #todo-form button {
-  background: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 0.75rem;
-  padding: 0.95rem 1.25rem;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid #c49d78;
+  border-radius: 0.9rem;
+  padding: 1rem 1.3rem;
   font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
+  transition: background 200ms ease, color 200ms ease, transform 160ms ease;
+}
+
+#todo-form button:hover {
+  background: rgba(143, 94, 52, 0.12);
+  color: #503926;
+  transform: translateY(-1px);
 }
 
 #todo-list {
   list-style: none;
-  margin: 1.5rem 0 0;
+  margin: 1.75rem 0 0;
   padding: 0;
 }
 
@@ -153,10 +182,11 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem;
-  border: 1px solid var(--border);
-  border-radius: 0.85rem;
-  margin-bottom: 0.75rem;
+  padding: 1.1rem 1.15rem;
+  border: 1px solid #d3bfa9;
+  border-radius: 0.95rem;
+  margin-bottom: 0.85rem;
+  background: rgba(255, 255, 250, 0.95);
 }
 
 .todo-item label {
@@ -165,19 +195,26 @@ p {
   align-items: center;
   gap: 0.85rem;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .todo-item input[type="checkbox"] {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 1.15rem;
+  height: 1.15rem;
   accent-color: var(--accent);
+  border: 1px solid #b79e86;
+  background: #f7efe4;
 }
 
-/* Entry animation for items */
+.todo-item input[type="checkbox"]:focus {
+  outline: 2px solid rgba(143, 94, 52, 0.2);
+  outline-offset: 2px;
+}
+
 .todo-item {
   opacity: 0;
   transform: translateY(8px);
-  animation: todo-slide-in 220ms ease forwards;
+  animation: todo-slide-in 260ms ease forwards;
 }
 
 @keyframes todo-slide-in {
@@ -187,27 +224,24 @@ p {
   }
 }
 
-/* Lift on hover */
 .todo-item {
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 .todo-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.10);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(68, 54, 42, 0.08);
 }
 
-/* Smooth strike-through and color change */
 .todo-item span {
-  transition: color 160ms ease, opacity 160ms ease, transform 160ms ease;
+  transition: color 180ms ease, opacity 180ms ease, transform 180ms ease;
 }
 .todo-item.completed span {
   text-decoration: line-through;
   color: var(--muted);
-  opacity: 0.85;
+  opacity: 0.8;
   transform: translateX(2px);
 }
 
-/* Checkbox interaction animation */
 .todo-item input[type="checkbox"] {
   transition: transform 120ms ease;
 }
@@ -224,19 +258,21 @@ p {
 
 .todo-item button {
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   color: var(--accent);
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.75rem;
 }
 
-.todo-item.completed span {
-  text-decoration: line-through;
-  color: var(--muted);
+.todo-item button:hover {
+  color: #5d3d24;
 }
 
 .no-todos {
   margin: 0;
   color: var(--muted);
   text-align: center;
+  font-style: italic;
 }
